@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <h1>Sleep Tracker</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=64) }}<br>
+        {% for error in form.name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.type.label }}<br>
+        {{ form.type() }}<br>
+        {% for error in form.type.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% endblock %}

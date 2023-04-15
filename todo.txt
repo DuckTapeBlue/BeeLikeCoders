@@ -1,0 +1,17 @@
+TODO:
+
+    2. Profile page (Add pet attribute to User Profile Page)
+    3. Pet choose Page (Links choice to user profile)
+    4. Sleep Tracker Page (No form)
+    5. CSSify
+    6. 
+    7. 
+    8. 
+
+
+FIXME:
+     1. make "must login" visible on home screen
+     2. fix the pet view page
+
+DONE:
+    1. Home page (login)

@@ -1,0 +1,44 @@
+
+<div class="container">
+  <h1>Sleep Tracker</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.day.label() }}
+        {{ form.day(class="form-control") }}
+        {% for error in form.day.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div><br>
+    <div class="form-group">
+      {{ form.quality.label() }}
+      {{ form.quality(class="form-control") }}
+      {% for error in form.quality.errors %}
+      <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div><br>
+    <div class="form-group">
+      {{ form.hours.label() }}
+      {{ form.hours(class="form-control") }}
+      {% for error in form.hours.errors %}
+      <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div><br>
+    <div class="form-group">
+        {{ form.disturbances.label() }}
+        {{ form.disturbances(class="form-control") }}
+        {% for error in form.disturbances.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div><br>
+    <div class="form-group">
+      {{ form.notes.label() }}
+      {{ form.notes(class="form-control") }}
+      {% for error in form.notes.errors %}
+      <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
