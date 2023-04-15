@@ -33,6 +33,8 @@ class User(UserMixin, Document):
     image = FileField()
     age = IntField()
     pet = ReferenceField('Pet')
+    pettag = ReferenceField('Pet')
+    userID = IntField
     prononuns = StringField()
 
     meta = {
@@ -58,8 +60,10 @@ class Pet(Document):
     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
     author  = ReferenceField('User',reverse_delete_rule=CASCADE) 
     name = StringField()
+    pettag = StringField()
     type = StringField()
     modify_date = DateTimeField()
+
     meta = {
         'ordering': ['lname','fname']
     }

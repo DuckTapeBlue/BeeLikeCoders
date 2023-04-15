@@ -136,6 +136,7 @@ def callback():
             )
             thisUser.save()
             thisUser.reload()
+
     else:
         thisUser.update(
             gid=gid, 
