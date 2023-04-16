@@ -1,10 +1,253 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/CSS/pet.CSS">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+   
+            --width: 100%;
+    
 
-{% block body %}
+    }
+    #healtHbar{
+        height: 60px;
+        display: flex;
+        align-items: flex-start ;
+        justify-content: center;
+        top: 0px;
+        width: var(--width);
+        background-color: none;
+    }   
+    </style>
+    <script type = "text/javascript">
+        // let averageScore = 88;
+        // let petType = 3;
+        let _ = location.href;
+            _ = _.slice(-1)
+            console.log(_)
+            // happy //
+        //   if(averageScore == 88 ){
+        //     console.log("your score is 88")
+        // }
+        let p = location.search;
+            p = p.slice(14, 16)
+            console.log(p)
 
 
-<h1 class="display-5 text-dark">{{pet.name}}</h1>
-<br><br>
-<h1 class="display-5 text-dark">{{pet.type}}</h1>
+        let health = p;
+        let maxHealth = 100;
+        let healthPercentage = (health / maxHealth) * 100; 
 
-{% endblock %}
+        var r = document.querySelector(':root');
+
+// Create a function for getting a variable value
+        function myFunction_get() {
+  // Get the styles (properties and values) for the root
+            var rs = getComputedStyle(r);
+  // Alert the value of the --blue variable
+                console.log("The value of --width is: " + rs.getPropertyValue('--width'));
+            }
+
+// Create a function for setting a variable value
+            function myFunction_set() {
+  // Set the value of variable --blue to another value (in this case "lightblue")
+                newvar = (healthPercentage + "%")
+                console.log(newvar)
+                r.style.setProperty('--width', newvar);
+            }
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+
+
+      
+
+       
+            //happy//
+            if (_ == 1 && p > 77){
+                myFunction_get()
+                console.log("the fox is happy")
+                function displayNextImage() {
+                x = (x === happyfox.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = happyfox[x];
+                healtHbar.style.backgroundColor = '#0fff00';
+                myFunction_set()
+                
+            }
+            }
+            if (_ == 2 && p > 77){
+                console.log("the wolf is happy")
+                function displayNextImage() {
+                x = (x === happywolf.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = happywolf[x];
+                healtHbar.style.backgroundColor = '#0fff00';
+                myFunction_set()
+            }
+            }
+            if (_ == 3 && p > 77){
+                myFunction_get()
+                console.log("the cat is happy")
+                function displayNextImage() {
+                x = (x === happycat.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = happycat[x];
+                healtHbar.style.backgroundColor = '#0fff00';
+                myFunction_set()
+            }
+            }
+          
+            //nuetral//
+            if (_ == 1 &&  p > 33 && p <= 77){
+                ("the fox is neutral")
+                function displayNextImage() {
+                x = (x === neutralfox.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = neutralfox[x];
+                healtHbar.style.backgroundColor = '#fcd36a';
+                myFunction_set()
+            }
+            }
+            if (_ == 2 &&  p > 33  && p <= 77){
+                ("the wolf is neutral")
+                function displayNextImage() {
+                x = (x === neutralwolf.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = neutralwolf[x];
+                healtHbar.style.backgroundColor = '#fcd36a';
+                myFunction_set()
+            }
+            }
+            if (_ == 3 &&  p > 33  && p <= 77){
+                ("the cat is neutral")
+                function displayNextImage() {
+                x = (x === neutralcat.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = neutralcat[x];
+                healtHbar.style.backgroundColor = '#fcd36a';
+                myFunction_set()
+            }
+            }
+        
+            // sad //
+            if (_ == 1 && p <= 33){
+                ("the fox is sad")
+                function displayNextImage() {
+                x = (x === sadfox.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = sadfox[x];
+                healtHbar.style.backgroundColor = '#e00b0b';
+                myFunction_set()
+            }
+            }
+            if (_ == 2 && p <= 33){
+                ("the wolf is sad")
+                function displayNextImage() {
+                x = (x === sadwolf.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = sadwolf[x];
+                healtHbar.style.backgroundColor = '#e00b0b';
+                myFunction_set()
+            }
+            }
+            if (_ == 3 && p <= 33){
+                ("the cat is sad")
+                function displayNextImage() {
+                x = (x === sadcat.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = sadcat[x];
+                healtHbar.style.backgroundColor = '#e00b0b';
+                myFunction_set()
+            }
+            }
+            
+
+
+        function startTimer() {
+            setInterval(displayNextImage, 800);
+            makeHealthbar()
+        }
+
+        var happyfox = [], x = -1;
+        var happywolf = [], x = -1;
+        var happycat = [], x = -1;
+
+        var neutralfox = [], x = -1;
+        var neutralwolf = [], x = -1;
+        var neutralcat = [], x = -1;
+
+        var sadfox = [], x = -1;
+        var sadwolf = [], x = -1;
+        var sadcat = [], x = -1;
+
+            //happy//
+        happyfox[0] = "../static/foxidle1.png";
+        happyfox[1] = "../static/foxidle2.png";
+       
+        happywolf[0] = "../static/wolfidle1.png";
+        happywolf[1] = "../static/wolfidle2.png";
+        
+        happycat[0] = "../static/catidle1.png";
+        happycat[1] = "../static/catidle2.png";
+        //neutral//
+        neutralfox[0] = "../static/foxneutral1.png";
+        neutralfox[1] = "../static/foxneutral2.png";
+       
+        neutralwolf[0] = "../static/wolfneutral1.png";
+        neutralwolf[1] = "../static/wolfneutral2.png";
+        
+        neutralcat[0] = "../static/catneutral1.png";
+        neutralcat[1] = "../static/catneutral2.png";
+        //sad//
+        sadfox[0] = "../static/foxsad1.png";
+        sadfox[1] = "../static/foxsad2.png";
+       
+        sadwolf[0] = "../static/wolfsad1.png";
+        sadwolf[1] = "../static/wolfsad2.png";
+        
+        sadcat[0] = "../static/catsad1.png";
+        sadcat[1] = "../static/catsad2.png";
+        
+        
+    </script>
+
+
+</head>
+   
+        
+<body onload = "startTimer()">
+    
+        <div class="hero">
+            
+            <div class="george" id = "healtHbar">
+
+            </div>
+            <img id="img" src=""/>
+            <a data-toggle="tooltip" data-placement="top" title="Delete Pet" href="/pet/delete/{{pet.id}}">
+                <img width="40" class="bottom-image" src="../static/can.png">
+            </a>
+            <h1 class="display-5 text-dark">{{pet.name}}</h1>
+
+        </div>
+            
+          
+
+        
+        
+   
+
+
+    
+
+
+
+
+</body>
+</html>

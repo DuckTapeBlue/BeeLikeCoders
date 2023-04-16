@@ -19,8 +19,9 @@ class SleepForm(FlaskForm):
     quality = IntegerField('Quality', validators=[DataRequired()])
     notes = StringField()
     
+    
 
 class PetForm(FlaskForm):
     name = StringField()
-    type = SelectField('Pet Type', choices=[(1, "Fox"), (2, "Wolf"), (3, "Cat")])
+    pet_type = SelectField('Pet Type', choices=[(1, "Fox"), (2, "Wolf"), (3, "Cat")])
     submit = SubmitField('Post')

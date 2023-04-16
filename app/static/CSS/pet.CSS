@@ -1,0 +1,86 @@
+:root{
+    --health: 88;
+    --maxHealth: 100;
+    --health-color: '#ff0000';
+
+}
+
+img{
+    margin-left: auto;
+    margin-top: 0px;
+    margin-right: auto;
+     display: block;
+    align-self: center;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    bottom: 0%;
+    left: 45%;
+    
+    
+}
+
+.bar{
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100%;
+    margin-top: 0px;
+}
+.bar2{
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    margin-top: 0px;
+}
+h1{
+    position: absolute;
+    left: 50%;
+    
+    text-decoration: none;
+    font-weight: bold;
+    color: aliceblue;
+    
+
+}
+
+.hero{
+    height: 100vh;
+    width: 100%;
+    background-image: url("../ezgif-4-4e1c3d8a23.jpeg");
+    background-size: cover;
+    background-position: center;
+    margin: 0%;
+    padding: 0%;
+    align-items: center;
+    top: 10px;
+}
+#health-bar{
+    height: 60px;
+    border: 5px solid #000;
+    display: flex;
+    align-items: flex-start ;
+    justify-content: center;
+    top: 0px;
+    width: calc(100% * var(--health)/var(--maxHealth));
+    background-color: var(--health-color);
+}
+#health-bar-fill {
+    height: 100%; 
+    transition: height 0.3s ease-in; 
+  }
+a img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -950px;
+    top: 80px;
+}
+body{
+    margin: 0%;
+}

@@ -1,8 +1,3 @@
-# This is where all the database collections are defined. A collection is a place to hold a defined 
-# set of data like Users, Blogs, Comments. Collections are defined below as classes. Each class name is 
-# the name of the data collection and each item is a data 'field' that stores a piece of data.  Data 
-# fields have types like IntField, StringField etc.  This uses the Mongoengine Python Library. When 
-# you interact with the data you are creating an onject that is an instance of the class.
 
 from sys import getprofile
 from tokenize import String
@@ -33,7 +28,7 @@ class User(UserMixin, Document):
     image = FileField()
     age = IntField()
     pet = ReferenceField('Pet')
-    pettag = ReferenceField('Pet')
+    pet_type = ReferenceField('Pet')
     userID = IntField
     prononuns = StringField()
 
@@ -50,6 +45,7 @@ class Sleep(Document):
     notes = StringField()
     score = IntField()
     modify_date = DateTimeField()
+    sleep_score = IntField()
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
 
     meta = {
@@ -61,9 +57,20 @@ class Pet(Document):
     author  = ReferenceField('User',reverse_delete_rule=CASCADE) 
     name = StringField()
     pettag = StringField()
-    type = StringField()
+    pet_type = StringField()
     modify_date = DateTimeField()
+    
+    health = IntField()
 
     meta = {
         'ordering': ['lname','fname']
     }
+
+class Column(Document):
+    col1=IntField
+    col2=IntField
+    col3=IntField
+    col4=IntField
+    col5=IntField
+    col6=IntField
+    col7=IntField

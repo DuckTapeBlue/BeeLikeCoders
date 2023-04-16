@@ -1,10 +1,10 @@
 from app import app
 import mongoengine.errors
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, jsonify
 from flask_login import current_user
-from app.classes.data import Pet
-from app.classes.forms import PetForm
-from flask_login import login_required
+from app.classes.data import Pet, User, Sleep
+from app.classes.forms import PetForm, ProfileForm
+from flask_login import login_required, current_user
 import datetime as dt
 
 
@@ -24,8 +24,10 @@ def petNew():
         newPet = Pet(
 
             author = current_user.id,
+            # pet_type = current_user.pet.pet_type,
+            pet_type = form.pet_type.data,
             name = form.name.data,
-            type = form.type.data,
+            
 
             
 
@@ -34,31 +36,60 @@ def petNew():
 
         newPet.save()
         
-        print(current_user.pet)
-        return redirect(url_for('pet',petID=newPet.id))
+        
+        return redirect(url_for('index'))
         
     return render_template('petform.html',form=form)
 
 
 
 
+# @app.route('/get_health')
+# def get_health(sleepcalendar):
+#     users = []
+#     total = 0
+#     for i in range (len(sleepcalendar)):
+#         if sleepcalendar[i].author == current_user.id:
+#             users.append(sleepcalendar[i])
+    
+#     healths = users.sleep_score
+#     for i in range (len(healths)):
+#         total = total + healths[i]
+#     average_score = total/len(healths)
+#     healths = Sleep.objects.filter(author=current_user.id)
+#     sleep_scores_list = [score.score for score in healths]
+#     average_score = sum(sleep_scores_list) / len(sleep_scores_list)
+#     return jsonify(average_score=average_score)
+
+@app.route('/get_health')
+def get_health():
+    # users = []
+    # total = 0
+    # for i in range (len(sleepcalendar)):
+    #     if sleepcalendar[i].author == current_user.id:
+    #         users.append(sleepcalendar[i])
+    
+    # healths = users.sleep_score
+    # for i in range (len(healths)):
+    #     total = total + healths[i]
+    # average_score = total/len(healths)
+    
+    healths = Sleep.objects.filter(author=current_user.id)
+
+    if healths: 
+        sleep_scores_list = []
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        for score in healths:
+            sleep_scores_list.append(score.sleep_score)
+        print("The length of healths:", len(healths))
+        print(sleep_scores_list[0])
+        print(healths[0])
+        print("The length of sleep_scores:", len(sleep_scores_list))
+        average_score = sum(sleep_scores_list) / len(sleep_scores_list)
+        return jsonify(average_score=average_score)
+    else:
+        print("No healths found")  
 
 
 
@@ -69,7 +100,8 @@ def petNew():
 @login_required
 def pet(petID):
     thisPet = Pet.objects.get(id=petID)
-
+    sleepcalendar = Sleep.objects()
+    get_health()
     return render_template('pet.html',pet=thisPet)
 
 @app.route('/pet/list')
@@ -78,18 +110,22 @@ def pet(petID):
 
 
 def PetTest():
+    
+    
+
     user_pet = Pet.objects(author=current_user.id).first()
     if user_pet:
-        userpet_id = str(user_pet.id)
-        print("this person has a pet")
-        return redirect(url_for('pet', petID = userpet_id))
-            # return render_template('pet/Pet.objects.get(id)')
-            # return render_template('pet/<user_pet.id>.html'.format(user_pet))
+        userpet_id = (user_pet.id)
+        pet_type = user_pet.pet_type
+        average_score = get_health()
+        average_score = 79
+        return redirect(url_for('pet', petID=userpet_id, averageScore = average_score, petType = pet_type))
     else:
         print("No pet for this person")
         return redirect(url_for('petNew'))
 
-        
+    
+
 
 @app.route('/pet/edit/<petID>', methods=['GET', 'POST'])
 @login_required
@@ -106,14 +142,15 @@ def petEdit(petID):
 
         editPet.update(
             name = form.name.data,
-            type = form.type.data,
+            
+            pet_type = form.pet_type.data,
             modify_date = dt.datetime.utcnow
         )
 
         return redirect(url_for('pet',petID=petID))
 
     form.name.data = editPet.name
-    form.type.data = editPet.type
+    form.pet_type.data = editPet.pet_type
 
 
 

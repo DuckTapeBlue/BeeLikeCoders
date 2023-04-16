@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <h1>Sleep Tracker</h1>
+<div class="container" id="petform">
+    <h1>Pet Form</h1>
     <form method="POST" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
       <p>
@@ -13,9 +13,9 @@
         {% endfor %}
     </p>
     <p>
-        {{ form.type.label }}<br>
-        {{ form.type() }}<br>
-        {% for error in form.type.errors %}
+        {{ form.pet_type.label }}<br>
+        {{ form.pet_type() }}<br>
+        {% for error in form.pet_type.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
