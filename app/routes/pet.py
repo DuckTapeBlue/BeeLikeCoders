@@ -86,8 +86,11 @@ def get_health():
         print(sleep_scores_list[0])
         print(healths[0])
         print("The length of sleep_scores:", len(sleep_scores_list))
+        print(sum(sleep_scores_list))
         average_score = sum(sleep_scores_list) / len(sleep_scores_list)
-        return jsonify(average_score=average_score)
+        print("this is the average score",  average_score)
+        return int(average_score)
+
     else:
         print("No healths found")  
 
@@ -102,7 +105,7 @@ def pet(petID):
     thisPet = Pet.objects.get(id=petID)
     sleepcalendar = Sleep.objects()
     get_health()
-    return render_template('pet.html',pet=thisPet)
+    return render_template('pet.html',pet=thisPet,average_score=60)
 
 @app.route('/pet/list')
 @app.route('/pet')
@@ -118,7 +121,7 @@ def PetTest():
         userpet_id = (user_pet.id)
         pet_type = user_pet.pet_type
         average_score = get_health()
-        average_score = 79
+        print(average_score)
         return redirect(url_for('pet', petID=userpet_id, averageScore = average_score, petType = pet_type))
     else:
         print("No pet for this person")
