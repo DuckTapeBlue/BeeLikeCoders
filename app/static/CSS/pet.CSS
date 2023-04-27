@@ -39,7 +39,7 @@ img{
     margin-top: 0px;
 }
 h1{
-    position: absolute;
+    position: relative;
     left: 50%;
     
     text-decoration: none;

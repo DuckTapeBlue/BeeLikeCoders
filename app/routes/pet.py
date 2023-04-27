@@ -82,11 +82,7 @@ def get_health():
 
         for score in healths:
             sleep_scores_list.append(score.sleep_score)
-        print("The length of healths:", len(healths))
-        print(sleep_scores_list[0])
-        print(healths[0])
-        print("The length of sleep_scores:", len(sleep_scores_list))
-        print(sum(sleep_scores_list))
+
         average_score = sum(sleep_scores_list) / len(sleep_scores_list)
         print("this is the average score",  average_score)
         return int(average_score)
@@ -104,8 +100,22 @@ def get_health():
 def pet(petID):
     thisPet = Pet.objects.get(id=petID)
     sleepcalendar = Sleep.objects()
-    get_health()
-    return render_template('pet.html',pet=thisPet,average_score=60)
+    healths = Sleep.objects.filter(author=current_user.id)
+
+    if healths: 
+        sleep_scores_list = []
+        sleep_disturbances_list = []
+
+        for score in healths:
+            sleep_scores_list.append(score.sleep_score)
+        for disturbances in healths:
+            sleep_disturbances_list.append(disturbances.disturbances)
+        average_score = (sum(sleep_scores_list) / len(sleep_scores_list)) / 2
+        points = len(sleep_disturbances_list) * 5
+        print("this is the average points",  points)
+
+        print("this is the average score",  average_score)
+    return render_template('pet.html',pet=thisPet,average_score = average_score, points = points)
 
 @app.route('/pet/list')
 @app.route('/pet')
@@ -178,3 +188,4 @@ def petDelete(petID):
     pets = Pet.objects()  
 
     return render_template('pets.html',pets=pets)
+

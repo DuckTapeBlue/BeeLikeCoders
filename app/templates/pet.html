@@ -22,21 +22,27 @@
         top: 0px;
         width: var(--width);
         background-color: none;
+    
     }   
+    p{
+        position: absolute;
+        bottom: 10px;
+        color: white;
+        left: 10px;
+        font-weight: bold;
+    }
     </style>
+      <p id="content-holder">Content is loading ...</p>
     <script type = "text/javascript">
         // let averageScore = 88;
         // let petType = 3;
         let _ = location.href;
             _ = _.slice(-1)
-            console.log(_)
-            // happy //
         //   if(averageScore == 88 ){
-        //     console.log("your score is 88")
         // }
         let p = location.search;
             p = p.slice(14, 16)
-            console.log(p)
+           
 
 
         let health = p;
@@ -50,133 +56,144 @@
   // Get the styles (properties and values) for the root
             var rs = getComputedStyle(r);
   // Alert the value of the --blue variable
-                console.log("The value of --width is: " + rs.getPropertyValue('--width'));
+                
             }
+            var contentHolder = document.getElementById('content-holder');
+            var newContent = "points";
+                point = '{{points}}'
+                
+            function doSomething()
+            {                if(point > 6)
+                    point = point - 5
+                    healthUpdate()
+                    num = point
+                    console.log(point)
+                    newContent = point;
+                    contentHolder.innerHTML = "Points: " + newContent;
+                    return point
+                
+            }
+                
+                newervar = '{{average_score}}'
+                
+            function healthUpdate(){
 
+                newervar = parseInt(newervar) + 5
+                width(newervar)
+                return newervar
+            }
+          
+            
+            
+            function width(x){
+                greg = (x + "%")
+                r.style.setProperty('--width', greg);
+                fred = parseInt(x)
+                if(fred > 77){
+                    healtHbar.style.backgroundColor = '#0fff00';
+                    r.style.setProperty('background-color', '#0fff00');
+                } else if(fred > 33  && fred <= 77){
+                    healtHbar.style.backgroundColor = '#fcd36a';
+                    r.style.setProperty('background-color', '#fcd36a');
+                } else if(fred <= 33){
+                  
+                    healtHbar.style.backgroundColor = '#e00b0b';
+                    r.style.setProperty('background-color', '#e00b0b');
+                }
+                
+            
+            }
 // Create a function for setting a variable value
             function myFunction_set() {
   // Set the value of variable --blue to another value (in this case "lightblue")
-                newvar = (healthPercentage + "%")
-                console.log(newvar)
+                newvar = ('{{average_score}}' + "%")
+               
                 r.style.setProperty('--width', newvar);
+                
             }
 
             l = 0;
-            if (l ==0);
-            console.log("this is average score")
-                console.log('{{average_score}}')
+           
+            console.log('{{points}}')
 
-
-
-        
-        
-        
+          
 
 
 
 
 
 
-
+            function initcolor(y){
+                if(y > 77){
+                    healtHbar.style.backgroundColor = '#0fff00';
+                    r.style.setProperty('background-color', '#0fff00');
+                } else if(y > 33  && y <= 77){
+                    healtHbar.style.backgroundColor = '#fcd36a';
+                    r.style.setProperty('background-color', '#fcd36a');
+                } else if(y <= 33){
+                    healtHbar.style.backgroundColor = '#e00b0b';
+                    r.style.setProperty('background-color', '#e00b0b');
+                }
+            }
 
       
+            function displayNextImage(){
+           
+                if(_ == 1){
+                    if(newervar > 77){
+                         x = (x === happyfox.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = happyfox[x];
+                         
+                    }
+                    else if(newervar > 33 &&  newervar <= 77){
+                         x = (x === neutralfox.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = neutralfox[x];
+                         
+                    }
+                    else{
+                         x = (x === sadfox.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = sadfox[x];
+                        
+                    }
+                }
+                if(_ == 2){
+                    if(newervar > 77){
+                         x = (x === happywolf.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = happywolf[x];
+                       
+                    }
+                    else if(newervar > 33 &&  newervar <= 77){
+                         x = (x === neutralwolf.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = neutralwolf[x];
 
-       
-            //happy//
-            if (_ == 1 && p > 77){
-                myFunction_get()
-                console.log("the fox is happy")
-                function displayNextImage() {
-                x = (x === happyfox.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = happyfox[x];
-                healtHbar.style.backgroundColor = '#0fff00';
-                myFunction_set()
-                
-            }
-            }
-            if (_ == 2 && p > 77){
-                console.log("the wolf is happy")
-                function displayNextImage() {
-                x = (x === happywolf.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = happywolf[x];
-                healtHbar.style.backgroundColor = '#0fff00';
-                myFunction_set()
-            }
-            }
-            if (_ == 3 && p > 77){
-                myFunction_get()
-                console.log("the cat is happy")
-                function displayNextImage() {
-                x = (x === happycat.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = happycat[x];
-                healtHbar.style.backgroundColor = '#0fff00';
-                myFunction_set()
-            }
-            }
-          
-            //nuetral//
-            if (_ == 1 &&  p > 33 && p <= 77){
-                ("the fox is neutral")
-                function displayNextImage() {
-                x = (x === neutralfox.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = neutralfox[x];
-                healtHbar.style.backgroundColor = '#fcd36a';
-                myFunction_set()
-            }
-            }
-            if (_ == 2 &&  '{{average_score}}' > 33  && '{{average_score}}' <= 77){
-                ("the wolf is neutral")
-                function displayNextImage() {
-                x = (x === neutralwolf.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = neutralwolf[x];
-                healtHbar.style.backgroundColor = '#fcd36a';
-                myFunction_set()
-            }
-            }
-            if (_ == 3 &&  p > 33  && p <= 77){
-                ("the cat is neutral")
-                function displayNextImage() {
-                x = (x === neutralcat.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = neutralcat[x];
-                healtHbar.style.backgroundColor = '#fcd36a';
-                myFunction_set()
-            }
-            }
-        
-            // sad //
-            if (_ == 1 && p <= 33){
-                ("the fox is sad")
-                function displayNextImage() {
-                x = (x === sadfox.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = sadfox[x];
-                healtHbar.style.backgroundColor = '#e00b0b';
-                myFunction_set()
-            }
-            }
-            if (_ == 2 && p <= 33){
-                ("the wolf is sad")
-                function displayNextImage() {
-                x = (x === sadwolf.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = sadwolf[x];
-                healtHbar.style.backgroundColor = '#e00b0b';
-                myFunction_set()
-            }
-            }
-            if (_ == 3 && p <= 33){
-                ("the cat is sad")
-                function displayNextImage() {
-                x = (x === sadcat.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = sadcat[x];
-                healtHbar.style.backgroundColor = '#e00b0b';
-                myFunction_set()
-            }
+                    }
+                    else{
+                         x = (x === sadwolf.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = sadwolf[x];
+                    }
+                }
+                if(_ == 3){
+                    if(newervar > 77){
+                         x = (x === happycat.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = happycat[x];
+                    }
+                    else if(newervar > 33 &&  newervar <= 77){
+                         x = (x === neutralcat.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = neutralcat[x];
+                    }
+                    else{
+                         x = (x === sadcat.length - 1) ? 0 : x + 1;
+                        document.getElementById("img").src = sadcat[x];
+                    }
+                }
             }
             
 
-
         function startTimer() {
             setInterval(displayNextImage, 800);
-            makeHealthbar()
+            myFunction_set()
+            initcolor('{{average_score}}')
+            contentHolder.innerHTML = "Points: " + '{{points}}';
         }
 
         var happyfox = [], x = -1;
@@ -237,10 +254,14 @@
             <a data-toggle="tooltip" data-placement="top" title="Delete Pet" href="/pet/delete/{{pet.id}}">
                 <img width="40" class="bottom-image" src="../static/can.png">
             </a>
+            <input type="button" onclick="doSomething()" value="Feed Me" />
             <h1 class="display-5 text-dark">{{pet.name}}</h1>
+            
+        <h1>
+          
+            </h1>
+            <h1></h1>
             <br><br>
-            <h1>average score should be between here: {{average_score}} : and here</h1>
-
         </div>
             
           
